@@ -54,9 +54,9 @@ function createUser() {
   compile_error
   echo -e "${GREEN}Setting up sudo for $COIN_USER ${NC}"
   usermod -aG sudo $COIN_USER
-  echo -e "${GREEN}To access your new user, as root use ${RED}'sudo - $COIN_NAME'${GREEN}"
-  echo -e "${GREEN}You can setup a password to login directly using: ${RED}'passwd $COIN_NAME'${NC}"
-  echo -e "${GREEN}To run commands as root using your $COIN_NAME user, use ${RED}'sudo <command>'${NC}"
+  echo -e "${GREEN}To access your new user, as root use ${RED}'sudo - $COIN_USER'${GREEN}"
+  echo -e "${GREEN}You can setup a password to login directly using: ${RED}'passwd $COIN_USER'${NC}"
+  echo -e "${GREEN}To run commands as root using your $COIN_USER user, use ${RED}'sudo <command>'${NC}"
   sleep 3
   # Get user home and config folder based on user created
   CONFIGFOLDER=$(eval echo ~$COIN_USER/.crowdcoincore)
@@ -117,9 +117,11 @@ function create_swap() {
       echo -e "${GREEN}Configuring /etc/fstab...${NC}"
       echo " "  >> /etc/fstab 
       echo "/swapfile none swap sw 0 0" >> /etc/fstab
+    else
+        echo -e "${GREEN}No swap file created! Be advised your MN can not run properly on low memory system.${NC}"
     fi
  else
-  echo -e "${GREEN}No swap file created.${NC}"
+  echo -e "${GREEN}No swap file needed.${NC}"
  fi
  clear
 }
