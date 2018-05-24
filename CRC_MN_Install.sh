@@ -340,6 +340,9 @@ EOF
   echo "enable service"
   systemctl enable $COIN_NAME.service 
   echo "$?"
+  echo "reload daemon"
+  systemctl daemon-reload
+  sleep 5
   echo "start service"
   systemctl start $COIN_NAME.service
   echo "$?"
