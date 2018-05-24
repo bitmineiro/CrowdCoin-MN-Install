@@ -415,6 +415,8 @@ function important_information() {
  echo -e "MASTERNODE PRIVATEKEY is: ${RED}$COINKEY${NC}"
  echo -e "Please check ${RED}$COIN_NAME${NC} is running with the following command: ${RED}sudo systemctl status $COIN_NAME.service${NC}"
  echo -e "================================================================================================================================"
+ echo -e ""
+ su - $COIN_USER
 }
 
 function setup_node() {
